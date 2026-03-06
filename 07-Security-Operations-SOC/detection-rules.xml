@@ -1,0 +1,14 @@
+<group name="startup_security_alerts">
+  <rule id="100001" level="10">
+    <if_sid>5712</if_sid>
+    <match>sshd:auth</match>
+    <description>ATTACK: Multiple failed SSH logins detected. Possible Brute Force on Production.</description>
+    <group>authentication_failed,pci_dss_10.2.4,</group>
+  </rule>
+
+  <rule id="100002" level="12">
+    <if_sid>60106</if_sid>
+    <field name="win.eventdata.targetUserName">Administrator</field>
+    <description>CRITICAL: Unauthorized use of renamed Administrator account detected!</description>
+  </rule>
+</group>

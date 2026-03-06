@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  peppermint:
+    image: pepper-mint/peppermint:latest
+    container_name: startup_helpdesk
+    restart: always
+    ports:
+      - "8080:3000"
+    environment:
+      - DATABASE_URL=postgres://user:pass@db:5432/peppermint
+    networks:
+      - mgmt_network
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_PASSWORD=SecurityFirst2026!
+    networks:
+      - mgmt_network
+
+networks:
+  mgmt_network:
+    external: true
