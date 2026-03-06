@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "parameters": { "rule": "everyMinute" },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [400, 300]
+    },
+    {
+      "parameters": { "url": "http://10.10.30.1" },
+      "name": "Check Prod Gateway",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [600, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [ { "value1": "={{ $json.statusCode }}", "operation": "notEqual", "value2": 200 } ]
+        }
+      },
+      "name": "If Down",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": { "main": [ [ { "node": "Check Prod Gateway", "type": "main", "index": 0 } ] ] },
+    "Check Prod Gateway": { "main": [ [ { "node": "If Down", "type": "main", "index": 0 } ] ] }
+  }
+}
