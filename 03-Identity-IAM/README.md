@@ -13,6 +13,5 @@ As the startup grows, managing individual logins becomes a security risk. I impl
 2. **Protocol Hardening:** Disabled legacy protocols (LLMNR, NetBIOS, SMBv1) that are commonly exploited by attackers to intercept credentials.
 3. **Password Policy:** Enforced complexity and 12-character minimums to defend against offline cracking.
 
-## 🚀 Key Takeaways for Recruiters
+## 🚀 Key Takeaways
 - **Scalability:** The IAM structure supports 5 to 500+ employees without changing the underlying security model.
-- **Compliance:** Centralized logging of all login attempts satisfies **SOC2** and **HIPAA** requirements for auditing user access.
